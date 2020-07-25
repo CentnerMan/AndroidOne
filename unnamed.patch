@@ -1,0 +1,538 @@
+Index: .idea/modules/AndroidOne.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules/AndroidOne.iml	(date 1595612770645)
++++ .idea/modules/AndroidOne.iml	(date 1595612770645)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id="AndroidOne" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="java-gradle" name="Java-Gradle">
++      <configuration>
++        <option name="BUILD_FOLDER_PATH" value="$MODULE_DIR$/../../build" />
++        <option name="BUILDABLE" value="false" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../..">
++      <excludeFolder url="file://$MODULE_DIR$/../../.gradle" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1595612770858)
++++ .idea/vcs.xml	(date 1595612770858)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1595621625151)
++++ .idea/misc.xml	(date 1595621625151)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Android API 30 Platform" project-jdk-type="Android SDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(date 1595615172328)
++++ .idea/gradle.xml	(date 1595615172328)
+@@ -0,0 +1,21 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="PLATFORM" />
++        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="1.8" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++        <option name="resolveModulePerSourceSet" value="false" />
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(date 1595612770907)
++++ .idea/modules.xml	(date 1595612770907)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidOne.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidOne.iml" group="AndroidOne" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="AndroidOne/app" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/codeStyles/Project.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/codeStyles/Project.xml	(date 1595612464827)
++++ .idea/codeStyles/Project.xml	(date 1595612464827)
+@@ -0,0 +1,116 @@
++<component name="ProjectCodeStyleConfiguration">
++  <code_scheme name="Project" version="173">
++    <codeStyleSettings language="XML">
++      <indentOptions>
++        <option name="CONTINUATION_INDENT_SIZE" value="4" />
++      </indentOptions>
++      <arrangement>
++        <rules>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>xmlns:android</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>^$</XML_NAMESPACE>
++                </AND>
++              </match>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>xmlns:.*</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>^$</XML_NAMESPACE>
++                </AND>
++              </match>
++              <order>BY_NAME</order>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>.*:id</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
++                </AND>
++              </match>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>.*:name</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
++                </AND>
++              </match>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>name</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>^$</XML_NAMESPACE>
++                </AND>
++              </match>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>style</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>^$</XML_NAMESPACE>
++                </AND>
++              </match>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>.*</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>^$</XML_NAMESPACE>
++                </AND>
++              </match>
++              <order>BY_NAME</order>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>.*</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
++                </AND>
++              </match>
++              <order>ANDROID_ATTRIBUTE_ORDER</order>
++            </rule>
++          </section>
++          <section>
++            <rule>
++              <match>
++                <AND>
++                  <NAME>.*</NAME>
++                  <XML_ATTRIBUTE />
++                  <XML_NAMESPACE>.*</XML_NAMESPACE>
++                </AND>
++              </match>
++              <order>BY_NAME</order>
++            </rule>
++          </section>
++        </rules>
++      </arrangement>
++    </codeStyleSettings>
++  </code_scheme>
++</component>
+\ No newline at end of file
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jarRepositories.xml	(date 1595612770940)
++++ .idea/jarRepositories.xml	(date 1595612770940)
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="BintrayJCenter" />
++      <option name="name" value="BintrayJCenter" />
++      <option name="url" value="https://jcenter.bintray.com/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="Google" />
++      <option name="name" value="Google" />
++      <option name="url" value="https://dl.google.com/dl/android/maven2/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/runConfigurations.xml	(date 1595612770984)
++++ .idea/runConfigurations.xml	(date 1595612770984)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(revision d70d94b96eddd2ef3e47aa5083b2df5eed17f70e)
++++ .gitignore	(date 1595612249248)
+@@ -1,23 +1,14 @@
+-# Compiled class file
+-*.class
+-
+-# Log file
+-*.log
+-
+-# BlueJ files
+-*.ctxt
+-
+-# Mobile Tools for Java (J2ME)
+-.mtj.tmp/
+-
+-# Package Files #
+-*.jar
+-*.war
+-*.nar
+-*.ear
+-*.zip
+-*.tar.gz
+-*.rar
+-
+-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+-hs_err_pid*
++*.iml
++.gradle
++/local.properties
++/.idea/caches
++/.idea/libraries
++/.idea/modules.xml
++/.idea/workspace.xml
++/.idea/navEditor.xml
++/.idea/assetWizardSettings.xml
++.DS_Store
++/build
++/captures
++.externalNativeBuild
++.cxx
+Index: .gradle/buildOutputCleanup/cache.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1251
+===================================================================
+--- .gradle/buildOutputCleanup/cache.properties	(date 1595612356936)
++++ .gradle/buildOutputCleanup/cache.properties	(date 1595612356936)
+@@ -0,0 +1,2 @@
++#Fri Jul 24 20:39:16 MSK 2020
++gradle.version=6.1.1
+diff --git .idea/caches/build_file_checksums.ser .idea/caches/build_file_checksums.ser
+new file mode 100644
+index 0000000000000000000000000000000000000000..c2814802d86bb641ecab3fde86fd30c01c96905b
+GIT binary patch
+literal 548
+zc${1FmVvdnh`~NNKUXg?FQq6yGexf?KR>5fFEb@IQ7^qHF(oHeub?PDD>b=9F91S2
+zm1gFoxMk*~I%lLNXBU^|7Q2L-Ts|(GuF1r}<i#MFTj`TnT;dMa8(f)}9Fm!vT3nKt
+zTj0aMpIeEdv4nx&Co8cmQNOe#Ge_SyvB0{bfPsOrxQX-N1E9MEL2`N^IX#cW;tZfX
+zEBmd3hs6>uGBYr_F>vMNC#JY1CYR(Fc`|U8WE7<qXXNLkR20}dFn|D0IR}sw0AjWh
+z27$zaf|w+b)1lrfEn;Abc3SgU{0AFH$O9$@29VVZ0{`qH94)?lu#cMWRI^1bYBtb`
+z#i=DFnR)5OFpY%_bqs7Ewfrg*>zd8he!au@^oEuAzMc{W9uynk3RC7jJg*-eQ5CMU
+z)geAYCjjW2oc!d(98k~}q!yKArWPX<mo8QelQZZMv`=PcR8kf>TEbxLY!wq)oLW>I
+zb78`Ty%#oIY`U=T!tM(@F6@kfS`~wcDh%_k$oAaqXV}E@vVn8Pn;%YfB@BXiRQLE~
+T8!;tssL|RQqxG;|FRlUryN$q!
+
+diff --git .gradle/checksums/sha1-checksums.bin .gradle/checksums/sha1-checksums.bin
+new file mode 100644
+index 0000000000000000000000000000000000000000..8707c6af30c329ed2934093ebb863fce73bdf7db
+GIT binary patch
+literal 28649
+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
+
+diff --git .gradle/checksums/md5-checksums.bin .gradle/checksums/md5-checksums.bin
+new file mode 100644
+index 0000000000000000000000000000000000000000..35da7b7fcade8fd807e41af40521809bf06db5be
+GIT binary patch
+literal 20797
+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
+I`)}0$0lQUog#Z8m
+
