@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_one">Кнопка</string>
+    <string name="switch_one">Переключалка</string>
+    <string name="todo">Тудушка</string>
+    <string name="field_one">Просто текст</string>
+    <string name="hello_android">Привет, Андрюшка!</string>
+    <string name="hello_user">Превед, медвед!</string>
+</resources>
