@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:text="@string/btn_one"
+        style="@style/Widget.AppCompat.Button.Colored"
         app:layout_constraintBottom_toTopOf="@+id/textViewOne"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,6 +44,7 @@
         android:layout_width="103dp"
         android:layout_height="94dp"
         android:layout_marginBottom="40dp"
+        android:background="?attr/selectableItemBackground"
         app:layout_constraintBottom_toTopOf="@+id/buttonOne"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,5 +66,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchOne" />
+
+    <Button
+        android:id="@+id/buttonSitySelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/select_city_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

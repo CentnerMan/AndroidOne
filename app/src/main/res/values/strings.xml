@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name" translatable="false">AndroidOne</string>
-    <string name="btn_one">Button</string>
+    <string name="btn_one">Change text</string>
     <string name="switch_one">Switch</string>
     <string name="todo">TODO</string>
     <string name="field_one">Super Text</string>
     <string name="hello_android">Hello, Android!</string>
     <string name="hello_user">Hello, User!</string>
+    <string name="image_click">Image click!</string>
+    <string name="check_switch">Checked switch:</string>
+    <string name="select_city">Select City</string>
+    <string name="select_wind_speed">Wind speed</string>
+    <string name="select_pressure">Pressure</string>
+    <string name="btn_ok">OK</string>
+    <string name="select_city_btn">Select city</string>
 </resources>

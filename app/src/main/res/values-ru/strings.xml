@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="btn_one">Кнопка</string>
+    <string name="btn_one">Смена текста</string>
     <string name="switch_one">Переключалка</string>
     <string name="todo">Тудушка</string>
     <string name="field_one">Просто текст</string>
     <string name="hello_android">Привет, Андрюшка!</string>
     <string name="hello_user">Превед, медвед!</string>
+    <string name="image_click">Жмяк по картинке!</string>
+    <string name="check_switch">Отслеживание переключения:</string>
+    <string name="select_city">Выберите город</string>
+    <string name="select_wind_speed">Скорость ветра</string>
+    <string name="select_pressure">Давление</string>
+    <string name="btn_ok">Подтвердить</string>
+    <string name="select_city_btn">Выбрать город</string>
 </resources>

@@ -68,4 +68,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewOne" />
 
+    <Button
+        android:id="@+id/buttonSitySelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_city_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintStart_toEndOf="@+id/textViewOne"
+        app:layout_constraintTop_toTopOf="@+id/textViewOne" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
