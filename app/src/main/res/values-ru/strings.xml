@@ -17,4 +17,10 @@
     <string name="is_off">Выкл</string>
     <string name="is_wind_speed">Скорость ветра</string>
     <string name="is_pressure">Давление</string>
+    <string name="city">Город</string>
+    <string name="temperature">Температура</string>
+    <string name="type_temp">\u00B0С</string>
+    <string name="type_wind_speed">м/с</string>
+    <string name="type_pressure">мм.рт.ст.</string>
+    <string name="default_city">Санкт-Петербург</string>
 </resources>

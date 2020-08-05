@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         if (city != null) {
             editTextOne.setText(city.getCity());
             String options = "";
-            if (city.getWindSpeed()) options += getString(R.string.is_wind_speed) + ", ";
-            if (city.getPressure()) options += getString(R.string.is_pressure);
+            if (city.getIsWindSpeed()) options += getString(R.string.is_wind_speed) + ", ";
+            if (city.getIsPressure()) options += getString(R.string.is_pressure);
             textViewOne.setText(options);
         }
         Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         if (simpleSwitch != null) {
             simpleSwitch.setOnCheckedChangeListener(this);
         }
-        buttonSelectCity = findViewById(R.id.buttonSitySelect);
+        buttonSelectCity = findViewById(R.id.buttonCitySelect);
     }
 
     private void setOnButtonClickBehavior() {

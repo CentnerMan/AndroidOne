@@ -1,7 +1,6 @@
 package ru.vlsv.androidone;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
-import java.time.Instant;
 
 public class SelectCityActivity extends AppCompatActivity {
 
@@ -40,10 +37,10 @@ public class SelectCityActivity extends AppCompatActivity {
         buttonOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SelectCityActivity.this, MainActivity.class);
+                Intent intent = new Intent(SelectCityActivity.this, WeatherActivity.class);
                 city.setCity(selectCityTextView.getEditableText().toString());
-                city.setWindSpeed(selectWindSpeed.isChecked());
-                city.setPressure(selectPressure.isChecked());
+                city.setIsWindSpeed(selectWindSpeed.isChecked());
+                city.setIsPressure(selectPressure.isChecked());
                 intent.putExtra("cityData", city);
                 startActivity(intent);
             }
@@ -58,8 +55,8 @@ public class SelectCityActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         city.setCity(selectCityTextView.getEditableText().toString());
-        city.setWindSpeed(selectWindSpeed.isChecked());
-        city.setPressure(selectPressure.isChecked());
+        city.setIsWindSpeed(selectWindSpeed.isChecked());
+        city.setIsPressure(selectPressure.isChecked());
         savedInstanceState.putSerializable("dataCity", city);
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -70,8 +67,8 @@ public class SelectCityActivity extends AppCompatActivity {
         City city = (City) savedInstanceState.getSerializable("dataCity");
         if (city != null) {
             selectCityTextView.setText(city.getCity());
-            selectWindSpeed.setChecked(city.getWindSpeed());
-            selectPressure.setChecked(city.getPressure());
+            selectWindSpeed.setChecked(city.getIsWindSpeed());
+            selectPressure.setChecked(city.getIsPressure());
         }
     }
 }

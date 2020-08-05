@@ -17,4 +17,10 @@
     <string name="is_off">Off</string>
     <string name="is_wind_speed">Wind speed</string>
     <string name="is_pressure">Pressure</string>
+    <string name="city">City</string>
+    <string name="temperature">Temperature</string>
+    <string name="type_temp">\u00B0C</string>
+    <string name="type_wind_speed">m/s</string>
+    <string name="type_pressure">mm Hg</string>
+    <string name="default_city">Saint-Petersburg</string>
 </resources>
