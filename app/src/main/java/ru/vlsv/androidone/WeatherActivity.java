@@ -41,10 +41,18 @@ public class WeatherActivity extends AppCompatActivity {
                         + " " + getString(R.string.type_wind_speed));
                 windSpeed.setVisibility(View.VISIBLE);
             }
-            if (inputCity.getIsPressure()) {
-                pressure.setText(getString(R.string.select_pressure) + ": " + RandomInt(750, 780)
-                        + " " + getString(R.string.type_pressure));
-                pressure.setVisibility(View.VISIBLE);
+            if (windSpeed.getVisibility() == View.VISIBLE) {
+                if (inputCity.getIsPressure()) {
+                    pressure.setText(getString(R.string.select_pressure) + ": " + RandomInt(750, 780)
+                            + " " + getString(R.string.type_pressure));
+                    pressure.setVisibility(View.VISIBLE);
+                }
+            } else {
+                if (inputCity.getIsPressure()) {
+                    windSpeed.setText(getString(R.string.select_pressure) + ": " + RandomInt(750, 780)
+                            + " " + getString(R.string.type_pressure));
+                    windSpeed.setVisibility(View.VISIBLE);
+                }
             }
         }
         selectCityBtnClickBehavior();
