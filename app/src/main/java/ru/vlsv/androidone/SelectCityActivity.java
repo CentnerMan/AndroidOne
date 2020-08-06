@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +17,7 @@ public class SelectCityActivity extends AppCompatActivity {
     private CheckBox selectWindSpeed;
     private CheckBox selectPressure;
     private Button buttonOK;
+    static String cityData = "cityData";
     private City city = new City();
 
     @Override
@@ -38,37 +40,46 @@ public class SelectCityActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SelectCityActivity.this, WeatherActivity.class);
-                city.setCity(selectCityTextView.getEditableText().toString());
-                city.setIsWindSpeed(selectWindSpeed.isChecked());
-                city.setIsPressure(selectPressure.isChecked());
-                intent.putExtra("cityData", city);
+                saveData();
+                intent.putExtra(cityData, city);
                 startActivity(intent);
             }
         });
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+    private void saveData() {
+        city.setCity(selectCityTextView.getEditableText().toString());
+        city.setIsWindSpeed(selectWindSpeed.isChecked());
+        city.setIsPressure(selectPressure.isChecked());
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
-        city.setCity(selectCityTextView.getEditableText().toString());
-        city.setIsWindSpeed(selectWindSpeed.isChecked());
-        city.setIsPressure(selectPressure.isChecked());
-        savedInstanceState.putSerializable("dataCity", city);
+        saveData();
+        savedInstanceState.putSerializable(cityData, city);
         super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        City city = (City) savedInstanceState.getSerializable("dataCity");
+        City city = (City) savedInstanceState.getSerializable(cityData);
         if (city != null) {
             selectCityTextView.setText(city.getCity());
             selectWindSpeed.setChecked(city.getIsWindSpeed());
             selectPressure.setChecked(city.getIsPressure());
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            saveData();
+            Intent intent = new Intent();
+            intent.putExtra(cityData, city);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+        return true;
     }
 }

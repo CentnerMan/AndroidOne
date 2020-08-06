@@ -1,6 +1,7 @@
 package ru.vlsv.androidone;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -17,17 +18,24 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView temperature;
     private TextView windSpeed;
     private TextView pressure;
+    static String cityData = "cityData";
+    private final int requestCode = 65854;
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wheather);
         initViews();
+        City inputCity = (City) getIntent().getSerializableExtra(cityData);
+        initFields(inputCity);
+        selectCityBtnClickBehavior();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void initFields(City inputCity) {
         windSpeed.setVisibility(View.INVISIBLE);
         pressure.setVisibility(View.INVISIBLE);
         temperature.setText(getString(R.string.temperature));
-        City inputCity = (City) getIntent().getSerializableExtra("cityData");
         if (inputCity != null) {
             if (!inputCity.getCity().equals("")) {
                 city.setText(inputCity.getCity());
@@ -55,7 +63,6 @@ public class WeatherActivity extends AppCompatActivity {
                 }
             }
         }
-        selectCityBtnClickBehavior();
     }
 
     private int RandomInt(int min, int max) {
@@ -76,7 +83,8 @@ public class WeatherActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(WeatherActivity.this, SelectCityActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
+                startActivityForResult(intent, requestCode);
             }
         });
     }
@@ -96,6 +104,16 @@ public class WeatherActivity extends AppCompatActivity {
         temperature.setText(savedInstanceState.getString("TemperatureField"));
         windSpeed.setText(savedInstanceState.getString("WindField"));
         pressure.setText(savedInstanceState.getString("PressureField"));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == this.requestCode && resultCode == RESULT_OK && data != null) {
+            City resultCity = (City) data.getSerializableExtra(SelectCityActivity.cityData);
+            initFields(resultCity);
+        }
     }
 
 }
