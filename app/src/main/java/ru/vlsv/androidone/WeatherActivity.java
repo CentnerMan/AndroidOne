@@ -18,8 +18,8 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView temperature;
     private TextView windSpeed;
     private TextView pressure;
-    static String cityData = "cityData";
-    private final int requestCode = 65854;
+    final static String cityData = "cityData";
+    private final int requestCode = 6585;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,6 @@ public class WeatherActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(WeatherActivity.this, SelectCityActivity.class);
-//                startActivity(intent);
                 startActivityForResult(intent, requestCode);
             }
         });

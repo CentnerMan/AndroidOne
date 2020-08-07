@@ -17,7 +17,7 @@ public class SelectCityActivity extends AppCompatActivity {
     private CheckBox selectWindSpeed;
     private CheckBox selectPressure;
     private Button buttonOK;
-    static String cityData = "cityData";
+    final static String cityData = "cityData";
     private City city = new City();
 
     @Override
@@ -72,14 +72,13 @@ public class SelectCityActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            saveData();
-            Intent intent = new Intent();
-            intent.putExtra(cityData, city);
-            setResult(RESULT_OK, intent);
-            finish();
-        }
-        return true;
+    public void onBackPressed() {
+        saveData();
+        Intent intent = new Intent();
+        intent.putExtra(cityData, city);
+        setResult(RESULT_OK, intent);
+        finish();
+        super.onBackPressed();
     }
+
 }
