@@ -8,11 +8,11 @@
         <item>Самара</item>
     </string-array>
 
-    <integer-array name="coatofarms_imgs">
-        <item>@drawable/msc</item><!-- герб Москвы -->
-        <item>@drawable/spb</item><!-- герб Санкт-Петербурга -->
-        <item>@drawable/ebrg</item><!-- герб Екатеринбурга -->
-        <item>@drawable/nsk</item><!-- герб Новосибирска -->
-        <item>@drawable/sam</item><!-- герб Самары -->
+    <integer-array name="weather">
+        <item>1</item><!-- погода Москвы -->
+        <item>2</item><!-- погода Санкт-Петербурга -->
+        <item>3</item><!-- погода Екатеринбурга -->
+        <item>4</item><!-- погода Новосибирска -->
+        <item>5</item><!-- погода Самары -->
     </integer-array>
 </resources>

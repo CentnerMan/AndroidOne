@@ -23,4 +23,5 @@
     <string name="type_wind_speed">m/s</string>
     <string name="type_pressure">mm Hg</string>
     <string name="default_city">Saint-Petersburg</string>
+    <string name="empty_list">Empty list</string>
 </resources>
