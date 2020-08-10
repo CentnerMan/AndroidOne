@@ -16,6 +16,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ru.vlsv.androidone.entities.City;
+
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     private Button buttonOne;
     private TextView textViewOne;

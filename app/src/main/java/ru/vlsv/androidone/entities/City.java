@@ -1,4 +1,4 @@
-package ru.vlsv.androidone;
+package ru.vlsv.androidone.entities;
 
 import java.io.Serializable;
 
@@ -21,6 +21,9 @@ public class City implements Serializable {
         this.temp = temp;
     }
 
+    public City(String city) {
+        this.city = city;
+    }
     public City() {
     }
 

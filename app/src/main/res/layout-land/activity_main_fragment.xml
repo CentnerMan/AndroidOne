@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
 
     <!-- Фрагмент с выбором городов -->
     <fragment android:name="ru.vlsv.androidone.fragments.CitiesFragment"

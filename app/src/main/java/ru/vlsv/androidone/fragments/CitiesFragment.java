@@ -18,6 +18,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import ru.vlsv.androidone.R;
+import ru.vlsv.androidone.WeatherFragmentActivity;
+import ru.vlsv.androidone.entities.City;
+import ru.vlsv.androidone.entities.CityContainer;
 
 public class CitiesFragment extends Fragment {
 
@@ -110,7 +113,7 @@ public class CitiesFragment extends Fragment {
             if (detail == null || detail.getIndex() != currentPosition) {
                 // Создаем новый фрагмент с текущей позицией для вывода герба
 
-                detail = WeatherFragment.create(getCoatContainer());
+                detail = WeatherFragment.create(getCityContainer());
 
                 // Выполняем транзакцию по замене фрагмента
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -123,18 +126,15 @@ public class CitiesFragment extends Fragment {
         } else {
             // Если нельзя вывести погоду рядом, откроем вторую activity
             Intent intent = new Intent();
-            intent.setClass(Objects.requireNonNull(getActivity()), WeatherFragment.class);
+            intent.setClass(Objects.requireNonNull(getActivity()), WeatherFragmentActivity.class);
             // и передадим туда параметры
-            intent.putExtra("index", getCoatContainer());
+            intent.putExtra("index", getCityContainer());
             startActivity(intent);
         }
     }
 
-    private CoatContainer getCoatContainer() {
+    private CityContainer getCityContainer() {
         String[] cities = getResources().getStringArray(R.array.cities);
-        CoatContainer container = new CoatContainer();
-        container.position = currentPosition;
-        container.cityName = cities[currentPosition];
-        return container;
+        return new CityContainer(currentPosition, new City(cities[currentPosition]));
     }
 }

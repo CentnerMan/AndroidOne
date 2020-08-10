@@ -15,10 +15,11 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import ru.vlsv.androidone.R;
+import ru.vlsv.androidone.entities.CityContainer;
 
 public class WeatherFragment extends Fragment {
 
-    static WeatherFragment create(CoatContainer container) {
+    static WeatherFragment create(CityContainer container) {
         WeatherFragment fragment = new WeatherFragment();    // создание
 
         // Передача параметра
@@ -30,22 +31,22 @@ public class WeatherFragment extends Fragment {
 
     // Получить индекс из списка (фактически из параметра)
     int getIndex() {
-        CoatContainer coatContainer = (CoatContainer) (Objects.requireNonNull(getArguments())
+        CityContainer cityContainer = (CityContainer) (Objects.requireNonNull(getArguments())
                 .getSerializable("index"));
 
         try {
-            return coatContainer.position;
+            return cityContainer.getPosition();
         } catch (Exception e) {
             return 0;
         }
     }
 
     String getCityName() {
-        CoatContainer coatContainer = (CoatContainer) (Objects.requireNonNull(getArguments())
+        CityContainer cityContainer = (CityContainer) (Objects.requireNonNull(getArguments())
                 .getSerializable("index"));
 
         try {
-            return coatContainer.cityName;
+            return cityContainer.getCity().getCity();
         } catch (Exception e) {
             return "";
         }

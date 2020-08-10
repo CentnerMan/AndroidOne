@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".WeatherFragmentActivity">
 
+    <!-- Здесь будет погода выбранного города -->
+    <FrameLayout
+        android:id="@+id/weather"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?android:attr/detailsElementBackground"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

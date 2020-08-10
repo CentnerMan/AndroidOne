@@ -20,14 +20,13 @@ public class WeatherFragmentActivity extends AppCompatActivity {
         }
 
         if (savedInstanceState == null) {
-            // Если эта activity запускается первый раз (с каждым новым гербом первый раз)
-            // то перенаправим параметр фрагменту
+            // Если эта activity запускается первый раз то перенаправим параметр фрагменту
             WeatherFragment details = new WeatherFragment();
             details.setArguments(getIntent().getExtras());
             // Добавим фрагмент на activity
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, details)
+                    .replace(R.id.weather_container, details)
                     .commit();
         }
     }

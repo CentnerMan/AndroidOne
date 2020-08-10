@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import ru.vlsv.androidone.entities.City;
+
 public class WeatherActivity extends AppCompatActivity {
 
     private Button selectCityBtn;
