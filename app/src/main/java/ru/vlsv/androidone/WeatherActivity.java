@@ -24,7 +24,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wheather);
+        setContentView(R.layout.activity_weather);
         initViews();
         City inputCity = (City) getIntent().getSerializableExtra(cityData);
         initFields(inputCity);
