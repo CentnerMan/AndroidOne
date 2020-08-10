@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,9 +20,13 @@ import ru.vlsv.androidone.entities.CityContainer;
 
 public class WeatherFragment extends Fragment {
 
+    private TextView city;
+    private TextView temperature;
+    private TextView windSpeed;
+    private TextView pressure;
+
     static WeatherFragment create(CityContainer container) {
         WeatherFragment fragment = new WeatherFragment();    // создание
-
         // Передача параметра
         Bundle args = new Bundle();
         args.putSerializable("index", container);
@@ -56,25 +61,35 @@ public class WeatherFragment extends Fragment {
     @SuppressLint("Recycle")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LinearLayout layout = new LinearLayout(getContext());
-        layout.setOrientation(LinearLayout.VERTICAL);
+        super.onCreateView(inflater, container, savedInstanceState);
+        initViews(container.getRootView());
 
-        TextView cityNameTextView = new TextView(getContext());
-        String cityName = getCityName();
-        cityNameTextView.setText(cityName);
-
-        // Определить какой герб надо показать, и показать его
-        ImageView coatOfArms = new ImageView(getActivity());
-
-        // Получить из ресурсов массив указателей на изображения гербов
-        TypedArray images = getResources().obtainTypedArray(R.array.weather);
-        // Выбрать по индексу подходящий
-        coatOfArms.setImageResource(images.getResourceId(getIndex(), -1));
-
-        layout.addView(cityNameTextView);
-        layout.addView(coatOfArms);
+//        LinearLayout layout = new LinearLayout(getContext());
+//        layout.setOrientation(LinearLayout.VERTICAL);
+//
+//        TextView cityNameTextView = new TextView(getContext());
+//        String cityName = getCityName();
+//        cityNameTextView.setText(cityName);
+//
+//        // Определить какой герб надо показать, и показать его
+//        ImageView coatOfArms = new ImageView(getActivity());
+//
+//        // Получить из ресурсов массив указателей на изображения гербов
+//        TypedArray images = getResources().obtainTypedArray(R.array.weather);
+//        // Выбрать по индексу подходящий
+//        coatOfArms.setImageResource(images.getResourceId(getIndex(), -1));
+//
+//        layout.addView(cityNameTextView);
+//        layout.addView(coatOfArms);
 
         return layout;
+    }
+
+    private void initViews(View view) {
+        city = view.findViewById(R.id.cityName);
+        temperature = view.findViewById(R.id.temperatureData);
+        windSpeed = view.findViewById(R.id.windSpeedData);
+        pressure = view.findViewById(R.id.pressureData);
     }
 
 }

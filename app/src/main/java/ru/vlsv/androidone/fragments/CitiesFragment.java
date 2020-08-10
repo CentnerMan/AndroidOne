@@ -62,7 +62,7 @@ public class CitiesFragment extends Fragment {
         // Если можно нарисовать рядом погоду, то сделаем это
         if (isExistWeather) {
             listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-            showCoatOfArms();
+            showWeather();
         }
     }
 
@@ -93,14 +93,14 @@ public class CitiesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 currentPosition = position;
-                showCoatOfArms();
+                showWeather();
             }
         });
     }
 
-    // Показать погоду. Ecли возможно, то показать рядом со списком,
+    // Показать погоду. Если возможно, то показать рядом со списком,
     // если нет, то открыть вторую activity
-    private void showCoatOfArms() {
+    private void showWeather() {
         if (isExistWeather) {
             // Выделим текущий элемент списка
             listView.setItemChecked(currentPosition, true);
@@ -111,7 +111,7 @@ public class CitiesFragment extends Fragment {
 
             // Если есть необходимость, то выведем погоду
             if (detail == null || detail.getIndex() != currentPosition) {
-                // Создаем новый фрагмент с текущей позицией для вывода герба
+                // Создаем новый фрагмент с текущей позицией для вывода погоды
 
                 detail = WeatherFragment.create(getCityContainer());
 
@@ -119,7 +119,6 @@ public class CitiesFragment extends Fragment {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.weather, detail);  // замена фрагмента
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                //ft.addToBackStack(null);
                 ft.addToBackStack("Some_Key");
                 ft.commit();
             }
