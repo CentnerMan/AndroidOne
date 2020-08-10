@@ -1,10 +1,10 @@
 package ru.vlsv.androidone;
 
-import androidx.appcompat.app.AppCompatActivity;
-import ru.vlsv.androidone.fragments.WeatherFragment;
-
 import android.content.res.Configuration;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import ru.vlsv.androidone.fragments.WeatherFragment;
 
 public class WeatherFragmentActivity extends AppCompatActivity {
 

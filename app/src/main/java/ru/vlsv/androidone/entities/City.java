@@ -24,6 +24,7 @@ public class City implements Serializable {
     public City(String city) {
         this.city = city;
     }
+
     public City() {
     }
 

@@ -1,8 +1,8 @@
 package ru.vlsv.androidone;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainFragmentActivity extends AppCompatActivity {
 
@@ -16,10 +16,8 @@ public class MainFragmentActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         int countOfFragmentInManager = getSupportFragmentManager().getBackStackEntryCount();
-        if(countOfFragmentInManager > 0) {
+        if (countOfFragmentInManager > 0) {
             getSupportFragmentManager().popBackStack();
-            /*getSupportFragmentManager().popBackStack("Some_Key",
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE);*/
         }
     }
 }
