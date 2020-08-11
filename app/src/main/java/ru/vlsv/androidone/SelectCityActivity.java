@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import ru.vlsv.androidone.entities.City;
 
 public class SelectCityActivity extends AppCompatActivity {
@@ -36,14 +37,11 @@ public class SelectCityActivity extends AppCompatActivity {
     }
 
     private void setOnButtonOKClickBehavior() {
-        buttonOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SelectCityActivity.this, WeatherActivity.class);
-                saveData();
-                intent.putExtra(cityData, city);
-                startActivity(intent);
-            }
+        buttonOK.setOnClickListener(view -> {
+            Intent intent = new Intent(SelectCityActivity.this, WeatherActivity.class);
+            saveData();
+            intent.putExtra(cityData, city);
+            startActivity(intent);
         });
     }
 

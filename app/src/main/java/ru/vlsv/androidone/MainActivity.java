@@ -30,12 +30,23 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+        initCity();
+
         String instanceState;
         if (savedInstanceState == null) {
             instanceState = "Первый запуск!";
         } else {
             instanceState = "Повторный запуск!";
         }
+        Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
+        Log.d("MainActivity", instanceState + " - onCreate()");
+
+        setOnButtonClickBehavior();
+        setOnImageClickBehavior();
+        setOtButtonCitySelectClickBehavior();
+    }
+
+    private void initCity() {
         City city = (City) getIntent().getSerializableExtra("cityData");
         if (city != null) {
             editTextOne.setText(city.getCity());
@@ -44,11 +55,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             if (city.getIsPressure()) options += getString(R.string.is_pressure);
             textViewOne.setText(options);
         }
-        Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
-        Log.d("MainActivity", instanceState + " - onCreate()");
-        setOnButtonClickBehavior();
-        setOnImageClickBehavior();
-        setOtButtonCitySelectClickBehavior();
     }
 
     private void initViews() {

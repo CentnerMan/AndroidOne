@@ -10,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import ru.vlsv.androidone.entities.City;
+
+import static ru.vlsv.androidone.tools.Tools.randomInt;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -43,32 +46,27 @@ public class WeatherActivity extends AppCompatActivity {
             } else {
                 city.setText(getString(R.string.default_city));
             }
-            temperature.setText(getString(R.string.temperature) + ": " + RandomInt(-40, 40)
+            temperature.setText(getString(R.string.temperature) + ": " + randomInt(-40, 40)
                     + " " + getString(R.string.type_temp));
             if (inputCity.getIsWindSpeed()) {
-                windSpeed.setText(getString(R.string.select_wind_speed) + ": " + RandomInt(0, 30)
+                windSpeed.setText(getString(R.string.select_wind_speed) + ": " + randomInt(0, 30)
                         + " " + getString(R.string.type_wind_speed));
                 windSpeed.setVisibility(View.VISIBLE);
             }
             if (windSpeed.getVisibility() == View.VISIBLE) {
                 if (inputCity.getIsPressure()) {
-                    pressure.setText(getString(R.string.select_pressure) + ": " + RandomInt(750, 780)
+                    pressure.setText(getString(R.string.select_pressure) + ": " + randomInt(750, 780)
                             + " " + getString(R.string.type_pressure));
                     pressure.setVisibility(View.VISIBLE);
                 }
             } else {
                 if (inputCity.getIsPressure()) {
-                    windSpeed.setText(getString(R.string.select_pressure) + ": " + RandomInt(750, 780)
+                    windSpeed.setText(getString(R.string.select_pressure) + ": " + randomInt(750, 780)
                             + " " + getString(R.string.type_pressure));
                     windSpeed.setVisibility(View.VISIBLE);
                 }
             }
         }
-    }
-
-    private int RandomInt(int min, int max) {
-        max -= min;
-        return (int) (Math.random() * ++max) + min;
     }
 
     private void initViews() {

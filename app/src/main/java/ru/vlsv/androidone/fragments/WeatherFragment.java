@@ -12,9 +12,12 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import ru.vlsv.androidone.R;
 import ru.vlsv.androidone.entities.City;
 import ru.vlsv.androidone.entities.CityContainer;
+
+import static ru.vlsv.androidone.tools.Tools.randomInt;
 
 public class WeatherFragment extends Fragment {
 
@@ -64,18 +67,13 @@ public class WeatherFragment extends Fragment {
     private void initFields(City inputCity) {
         if (inputCity != null) {
             cityView.setText(inputCity.getCity());
-            temperature.setText(getString(R.string.temperature) + ": " + RandomInt(-40, 40)
+            temperature.setText(getString(R.string.temperature) + ": " + randomInt(-40, 40)
                     + " " + getString(R.string.type_temp));
-            windSpeed.setText(getString(R.string.select_wind_speed) + ": " + RandomInt(0, 30)
+            windSpeed.setText(getString(R.string.select_wind_speed) + ": " + randomInt(0, 30)
                     + " " + getString(R.string.type_wind_speed));
-            pressure.setText(getString(R.string.select_pressure) + ": " + RandomInt(750, 780)
+            pressure.setText(getString(R.string.select_pressure) + ": " + randomInt(750, 780)
                     + " " + getString(R.string.type_pressure));
         }
-    }
-
-    private int RandomInt(int min, int max) {
-        max -= min;
-        return (int) (Math.random() * ++max) + min;
     }
 
     @Override
@@ -89,6 +87,25 @@ public class WeatherFragment extends Fragment {
         temperature = view.findViewById(R.id.temperatureData);
         windSpeed = view.findViewById(R.id.windSpeedData);
         pressure = view.findViewById(R.id.pressureData);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        savedInstanceState.putString("CityField", cityView.getText().toString());
+        savedInstanceState.putString("TemperatureField", temperature.getText().toString());
+        savedInstanceState.putString("WindField", windSpeed.getText().toString());
+        savedInstanceState.putString("PressureField", pressure.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        cityView.setText(savedInstanceState.getString("CityField"));
+        temperature.setText(savedInstanceState.getString("TemperatureField"));
+        windSpeed.setText(savedInstanceState.getString("WindField"));
+        pressure.setText(savedInstanceState.getString("PressureField"));
+
     }
 
 }
