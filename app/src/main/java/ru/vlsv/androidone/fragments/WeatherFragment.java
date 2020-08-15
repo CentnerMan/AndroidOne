@@ -12,19 +12,25 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import ru.vlsv.androidone.R;
 import ru.vlsv.androidone.entities.City;
 import ru.vlsv.androidone.entities.CityContainer;
-
-import static ru.vlsv.androidone.tools.Tools.randomInt;
 
 public class WeatherFragment extends Fragment {
 
     private TextView cityView;
     private TextView temperature;
+    private TextView temperatureDays;
     private TextView windSpeed;
     private TextView pressure;
+
+    private String[] cities;
+    private int[] temperatureArr;
+    private int[] temperatureOneArr;
+    private int[] temperatureTwoArr;
+    private int[] temperatureThreeArr;
+    private int[] windSpeedArr;
+    private int[] pressureArr;
 
     static WeatherFragment create(CityContainer container) {
         WeatherFragment fragment = new WeatherFragment();    // создание
@@ -60,18 +66,23 @@ public class WeatherFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
+        initArrays();
         initFields(getCity());
     }
 
     @SuppressLint("SetTextI18n")
     private void initFields(City inputCity) {
         if (inputCity != null) {
+            int currentPosition = getIndex();
             cityView.setText(inputCity.getCity());
-            temperature.setText(getString(R.string.temperature) + ": " + randomInt(-40, 40)
+            temperature.setText(getString(R.string.temperature) + ": " + temperatureArr[currentPosition]
                     + " " + getString(R.string.type_temp));
-            windSpeed.setText(getString(R.string.select_wind_speed) + ": " + randomInt(0, 30)
+            temperatureDays.setText(temperatureOneArr[currentPosition] + " " + getString(R.string.type_temp)
+                    + " | " + temperatureTwoArr[currentPosition] + " " + getString(R.string.type_temp)
+                    + " | " + temperatureThreeArr[currentPosition] + " " + getString(R.string.type_temp));
+            windSpeed.setText(getString(R.string.select_wind_speed) + ": " + windSpeedArr[currentPosition]
                     + " " + getString(R.string.type_wind_speed));
-            pressure.setText(getString(R.string.select_pressure) + ": " + randomInt(750, 780)
+            pressure.setText(getString(R.string.select_pressure) + ": " + pressureArr[currentPosition]
                     + " " + getString(R.string.type_pressure));
         }
     }
@@ -85,27 +96,19 @@ public class WeatherFragment extends Fragment {
     private void initViews(View view) {
         cityView = view.findViewById(R.id.cityName);
         temperature = view.findViewById(R.id.temperatureData);
+        temperatureDays = view.findViewById(R.id.temperatureDays);
         windSpeed = view.findViewById(R.id.windSpeedData);
         pressure = view.findViewById(R.id.pressureData);
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
-        savedInstanceState.putString("CityField", cityView.getText().toString());
-        savedInstanceState.putString("TemperatureField", temperature.getText().toString());
-        savedInstanceState.putString("WindField", windSpeed.getText().toString());
-        savedInstanceState.putString("PressureField", pressure.getText().toString());
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        cityView.setText(savedInstanceState.getString("CityField"));
-        temperature.setText(savedInstanceState.getString("TemperatureField"));
-        windSpeed.setText(savedInstanceState.getString("WindField"));
-        pressure.setText(savedInstanceState.getString("PressureField"));
-
+    private void initArrays() {
+        cities = getResources().getStringArray(R.array.cities);
+        temperatureArr = getResources().getIntArray(R.array.weather_today);
+        temperatureOneArr = getResources().getIntArray(R.array.weather_tomorrow);
+        temperatureTwoArr = getResources().getIntArray(R.array.weather_two);
+        temperatureThreeArr = getResources().getIntArray(R.array.weather_three);
+        windSpeedArr = getResources().getIntArray(R.array.wind_speed);
+        pressureArr = getResources().getIntArray(R.array.pressure);
     }
 
 }

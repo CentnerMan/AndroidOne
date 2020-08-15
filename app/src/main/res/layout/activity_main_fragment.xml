@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- это макет для портретной ориентации -->
+<?xml version="1.0" encoding="utf-8"?><!-- это макет для портретной ориентации -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!-- в портретной ориентации у activity только один фрагмент -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <fragment android:name="ru.vlsv.androidone.fragments.CitiesFragment"
+
+        <fragment
             android:id="@+id/cities"
+            android:name="ru.vlsv.androidone.fragments.CitiesFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:ignore="Instantiatable" />

@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
 
 public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapter.ViewHolder> {
     private ArrayList<String> data;
@@ -22,8 +22,8 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cities_fragment, parent,
-                false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.city_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,38 +40,12 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         return data == null ? 0 : data.size();
     }
 
-    void add(String newElement) {
-        data.add(newElement);
-        notifyItemInserted(data.size() - 1);
-    }
-
-    void remove() {
-        if(data.size() > 0) {
-            data.remove(0);
-            notifyItemRemoved(0);
-        }
-    }
-
-    void move() {
-        if(data.size() > 2) {
-            String item = data.get(2);
-            data.remove(2);
-            data.add(0, item);
-            notifyItemMoved(2, 0);
-        }
-    }
-
-    void clearList() {
-        data = new ArrayList<>();
-        notifyDataSetChanged();
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.citiesTextView);
+            textView = itemView.findViewById(R.id.itemTextView);
         }
 
         void setTextToTextView(String text) {
@@ -79,12 +53,9 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         }
 
         void setOnClickForItem(final String text) {
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(onItemClickCallback != null) {
-                        onItemClickCallback.onItemClicked(text);
-                    }
+            textView.setOnClickListener(view -> {
+                if (onItemClickCallback != null) {
+                    onItemClickCallback.onItemClicked(view, getAdapterPosition());
                 }
             });
         }

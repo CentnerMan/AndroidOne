@@ -25,9 +25,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:textSize="20sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityName"
+        tools:text="@string/temperature" />
+
+    <TextView
+        android:id="@+id/temperatureDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="18sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureData"
         tools:text="@string/temperature" />
 
     <TextView
@@ -40,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperatureData"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureDays"
         tools:text="@string/select_wind_speed" />
 
     <TextView

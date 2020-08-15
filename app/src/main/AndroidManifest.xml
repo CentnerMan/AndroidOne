@@ -17,9 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".WeatherFragmentActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".WeatherActivity" />
-        <activity android:name=".SelectCityActivity" />
     </application>
 
 </manifest>

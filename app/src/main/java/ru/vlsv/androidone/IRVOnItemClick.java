@@ -1,5 +1,7 @@
-package com.geekbrains.a1l6_recyclerview;
+package ru.vlsv.androidone;
+
+import android.view.View;
 
 public interface IRVOnItemClick {
-    void onItemClicked(String itemText);
+    void onItemClicked(View view, int position);
 }

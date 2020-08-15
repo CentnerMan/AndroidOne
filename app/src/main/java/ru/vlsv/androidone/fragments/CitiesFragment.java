@@ -6,31 +6,30 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import ru.vlsv.androidone.IRVOnItemClick;
 import ru.vlsv.androidone.R;
+import ru.vlsv.androidone.RecyclerDataAdapter;
 import ru.vlsv.androidone.WeatherFragmentActivity;
 import ru.vlsv.androidone.entities.City;
 import ru.vlsv.androidone.entities.CityContainer;
 
-public class CitiesFragment extends Fragment {
+public class CitiesFragment extends Fragment implements IRVOnItemClick {
 
-    private ListView listView;
-    private TextView emptyTextView;
-
+    private RecyclerView recyclerView;
     private boolean isExistWeather;  // Можно ли расположить рядом фрагмент с погодой
     private int currentPosition = 0;    // Текущая позиция (выбранный город)
 
-    // При создании фрагмента укажем его макет
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,7 +40,26 @@ public class CitiesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
-        initList();
+        setupRecyclerView();
+    }
+
+    private void initViews(View view) {
+        recyclerView = view.findViewById(R.id.recyclerView);
+    }
+
+    private void setupRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        ArrayList<String> stringArrayList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.cities)));
+        RecyclerDataAdapter adapter = new RecyclerDataAdapter(stringArrayList, this);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClicked(View view, int position) {
+        currentPosition = position;
+        showWeather();
     }
 
     // activity создана, можно к ней обращаться. Выполним начальные действия
@@ -61,7 +79,6 @@ public class CitiesFragment extends Fragment {
 
         // Если можно нарисовать рядом погоду, то сделаем это
         if (isExistWeather) {
-            listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
             showWeather();
         }
     }
@@ -73,37 +90,12 @@ public class CitiesFragment extends Fragment {
         super.onSaveInstanceState(outState);
     }
 
-    private void initViews(View view) {
-        listView = view.findViewById(R.id.cities_list_view);
-        emptyTextView = view.findViewById(R.id.cities_list_empty_view);
-    }
-
-    private void initList() {
-        // Для того, чтобы показать список, надо задействовать адаптер.
-        // Такая конструкция работает для списков, например ListActivity.
-        // Здесь создаем из ресурсов список городов (из массива)
-        ArrayAdapter adapter =
-                ArrayAdapter.createFromResource(Objects.requireNonNull(getActivity()), R.array.cities,
-                        android.R.layout.simple_list_item_activated_1);
-        listView.setAdapter(adapter);
-
-        listView.setEmptyView(emptyTextView);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                currentPosition = position;
-                showWeather();
-            }
-        });
-    }
-
     // Показать погоду. Если возможно, то показать рядом со списком,
     // если нет, то открыть вторую activity
     private void showWeather() {
         if (isExistWeather) {
             // Выделим текущий элемент списка
-            listView.setItemChecked(currentPosition, true);
+//            recyclerView.setItemChecked(currentPosition, true);
 
             // Проверим, что фрагмент с погодой существует в activity
             WeatherFragment detail = (WeatherFragment)

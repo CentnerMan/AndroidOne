@@ -8,11 +8,4 @@
         <item>Самара</item>
     </string-array>
 
-    <integer-array name="weather">
-        <item>1</item><!-- погода Москвы -->
-        <item>2</item><!-- погода Санкт-Петербурга -->
-        <item>3</item><!-- погода Екатеринбурга -->
-        <item>4</item><!-- погода Новосибирска -->
-        <item>5</item><!-- погода Самары -->
-    </integer-array>
 </resources>

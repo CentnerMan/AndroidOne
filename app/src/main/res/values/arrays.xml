@@ -8,11 +8,51 @@
         <item>Samara</item>
     </string-array>
 
-    <integer-array name="weather">
-        <item>1</item><!-- погода Москвы -->
-        <item>2</item><!-- погода Санкт-Петербурга -->
-        <item>3</item><!-- погода Екатеринбурга -->
+    <integer-array name="weather_today" translatable="false">
+        <item>28</item><!-- погода Москвы -->
+        <item>22</item><!-- погода Санкт-Петербурга -->
+        <item>23</item><!-- погода Екатеринбурга -->
+        <item>24</item><!-- погода Новосибирска -->
+        <item>25</item><!-- погода Самары -->
+    </integer-array>
+
+    <integer-array name="weather_tomorrow" translatable="false">
+        <item>27</item><!-- погода Москвы -->
+        <item>28</item><!-- погода Санкт-Петербурга -->
+        <item>30</item><!-- погода Екатеринбурга -->
+        <item>22</item><!-- погода Новосибирска -->
+        <item>20</item><!-- погода Самары -->
+    </integer-array>
+
+    <integer-array name="weather_two" translatable="false">
+        <item>22</item><!-- погода Москвы -->
+        <item>24</item><!-- погода Санкт-Петербурга -->
+        <item>30</item><!-- погода Екатеринбурга -->
+        <item>20</item><!-- погода Новосибирска -->
+        <item>19</item><!-- погода Самары -->
+    </integer-array>
+
+    <integer-array name="weather_three" translatable="false">
+        <item>21</item><!-- погода Москвы -->
+        <item>24</item><!-- погода Санкт-Петербурга -->
+        <item>26</item><!-- погода Екатеринбурга -->
+        <item>18</item><!-- погода Новосибирска -->
+        <item>17</item><!-- погода Самары -->
+    </integer-array>
+
+    <integer-array name="wind_speed" translatable="false">
+        <item>10</item><!-- погода Москвы -->
+        <item>12</item><!-- погода Санкт-Петербурга -->
+        <item>0</item><!-- погода Екатеринбурга -->
         <item>4</item><!-- погода Новосибирска -->
-        <item>5</item><!-- погода Самары -->
+        <item>7</item><!-- погода Самары -->
+    </integer-array>
+
+    <integer-array name="pressure" translatable="false">
+        <item>765</item><!-- погода Москвы -->
+        <item>768</item><!-- погода Санкт-Петербурга -->
+        <item>766</item><!-- погода Екатеринбурга -->
+        <item>762</item><!-- погода Новосибирска -->
+        <item>767</item><!-- погода Самары -->
     </integer-array>
 </resources>
