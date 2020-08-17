@@ -16,4 +16,6 @@
     <string name="type_pressure">mm Hg</string>
     <string name="default_city">Saint-Petersburg</string>
     <string name="empty_list">Empty list</string>
+    <string name="touch_me">Touch me</string>
+    <string name="touch_btn_press">Satisfaction</string>
 </resources>

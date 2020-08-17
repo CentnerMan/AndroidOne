@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ public class WeatherFragment extends Fragment {
     private TextView temperatureDays;
     private TextView windSpeed;
     private TextView pressure;
+    private MaterialButton button;
 
     private String[] cities;
     private int[] temperatureArr;
@@ -68,6 +71,17 @@ public class WeatherFragment extends Fragment {
         initViews(view);
         initArrays();
         initFields(getCity());
+        setOnBtnClickListener();
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private void setOnBtnClickListener() {
+        button.setOnClickListener(view -> {
+            button.setPressed(true);
+            button.setText(R.string.touch_btn_press);
+            button.setBackgroundColor(R.color.colorAccent);
+            cityView.setText(R.string.default_city);
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -99,6 +113,7 @@ public class WeatherFragment extends Fragment {
         temperatureDays = view.findViewById(R.id.temperatureDays);
         windSpeed = view.findViewById(R.id.windSpeedData);
         pressure = view.findViewById(R.id.pressureData);
+        button = view.findViewById(R.id.touch_btn);
     }
 
     private void initArrays() {
