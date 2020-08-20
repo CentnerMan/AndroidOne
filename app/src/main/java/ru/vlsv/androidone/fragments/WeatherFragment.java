@@ -2,14 +2,24 @@ package ru.vlsv.androidone.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.gson.Gson;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Locale;
 import java.util.Objects;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,23 +27,24 @@ import androidx.fragment.app.Fragment;
 import ru.vlsv.androidone.R;
 import ru.vlsv.androidone.entities.City;
 import ru.vlsv.androidone.entities.CityContainer;
+import ru.vlsv.androidone.model.WeatherRequest;
+
+import static ru.vlsv.androidone.tools.Tools.getLines;
 
 public class WeatherFragment extends Fragment {
 
     private TextView cityView;
     private TextView temperature;
-    private TextView temperatureDays;
+    private TextView humidity;
     private TextView windSpeed;
     private TextView pressure;
-    private MaterialButton button;
 
     private String[] cities;
-    private int[] temperatureArr;
-    private int[] temperatureOneArr;
-    private int[] temperatureTwoArr;
-    private int[] temperatureThreeArr;
-    private int[] windSpeedArr;
-    private int[] pressureArr;
+    private String[] citiesEng;
+
+    private static final String TAG = "WEATHER";
+    private static final String WEATHER_URL_PREFFIX = "https://api.openweathermap.org/data/2.5/weather?q=";
+    private static final String WEATHER_URL_SUFFIX = "&units=metric&appid=";
 
     static WeatherFragment create(CityContainer container) {
         WeatherFragment fragment = new WeatherFragment();    // создание
@@ -70,34 +81,17 @@ public class WeatherFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         initArrays();
-        initFields(getCity());
-        setOnBtnClickListener();
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private void setOnBtnClickListener() {
-        button.setOnClickListener(view -> {
-            button.setPressed(true);
-            button.setText(R.string.touch_btn_press);
-            button.setBackgroundColor(R.color.colorAccent);
-            cityView.setText(R.string.default_city);
-        });
+        showWeather(getCity());
     }
 
     @SuppressLint("SetTextI18n")
     private void initFields(City inputCity) {
         if (inputCity != null) {
-            int currentPosition = getIndex();
             cityView.setText(inputCity.getCity());
-            temperature.setText(getString(R.string.temperature) + ": " + temperatureArr[currentPosition]
-                    + " " + getString(R.string.type_temp));
-            temperatureDays.setText(temperatureOneArr[currentPosition] + " " + getString(R.string.type_temp)
-                    + " | " + temperatureTwoArr[currentPosition] + " " + getString(R.string.type_temp)
-                    + " | " + temperatureThreeArr[currentPosition] + " " + getString(R.string.type_temp));
-            windSpeed.setText(getString(R.string.select_wind_speed) + ": " + windSpeedArr[currentPosition]
-                    + " " + getString(R.string.type_wind_speed));
-            pressure.setText(getString(R.string.select_pressure) + ": " + pressureArr[currentPosition]
-                    + " " + getString(R.string.type_pressure));
+            temperature.setText(getString(R.string.temperature));
+            humidity.setText(getString(R.string.humidity));
+            windSpeed.setText(getString(R.string.select_wind_speed));
+            pressure.setText(getString(R.string.select_pressure));
         }
     }
 
@@ -110,20 +104,74 @@ public class WeatherFragment extends Fragment {
     private void initViews(View view) {
         cityView = view.findViewById(R.id.cityName);
         temperature = view.findViewById(R.id.temperatureData);
-        temperatureDays = view.findViewById(R.id.temperatureDays);
+        humidity = view.findViewById(R.id.humidityData);
         windSpeed = view.findViewById(R.id.windSpeedData);
         pressure = view.findViewById(R.id.pressureData);
-        button = view.findViewById(R.id.touch_btn);
     }
 
     private void initArrays() {
         cities = getResources().getStringArray(R.array.cities);
-        temperatureArr = getResources().getIntArray(R.array.weather_today);
-        temperatureOneArr = getResources().getIntArray(R.array.weather_tomorrow);
-        temperatureTwoArr = getResources().getIntArray(R.array.weather_two);
-        temperatureThreeArr = getResources().getIntArray(R.array.weather_three);
-        windSpeedArr = getResources().getIntArray(R.array.wind_speed);
-        pressureArr = getResources().getIntArray(R.array.pressure);
+        citiesEng = getResources().getStringArray(R.array.cities_eng);
     }
 
+    public void showWeather(City inputCity) {
+        try {
+            int currentPosition = getIndex();
+            String WEATHER_URL = WEATHER_URL_PREFFIX + citiesEng[currentPosition] + WEATHER_URL_SUFFIX;
+            final URL uri = new URL(WEATHER_URL + "88a393e90d1a828aeabbca6a84a02cae");
+            final Handler handler = new Handler(); // Запоминаем основной поток
+            new Thread(new Runnable() {
+                public void run() {
+                    HttpsURLConnection urlConnection = null;
+                    try {
+                        urlConnection = (HttpsURLConnection) uri.openConnection();
+                        urlConnection.setRequestMethod("GET"); // установка метода получения данных -GET
+                        urlConnection.setReadTimeout(10000); // установка таймаута - 10 000 миллисекунд
+                        BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream())); // читаем  данные в поток
+                        String result = getLines(in);
+                        // преобразование данных запроса в модель
+                        Gson gson = new Gson();
+                        final WeatherRequest weatherRequest = gson.fromJson(result, WeatherRequest.class);
+                        // Возвращаемся к основному потоку
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                displayWeather(weatherRequest);
+                            }
+                        });
+                    } catch (Exception e) {
+                        initFields(getCity()); //Если не сработает интернет
+                        Log.e(TAG, "Fail connection", e);
+                        e.printStackTrace();
+                    } finally {
+                        if (null != urlConnection) {
+                            urlConnection.disconnect();
+                        }
+                    }
+                }
+            }).start();
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "Fail URI", e);
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void displayWeather(WeatherRequest weatherRequest) {
+        int currentPosition = getIndex();
+        cityView.setText(cities[currentPosition]);
+
+        String temperatureValue = String.format(Locale.getDefault(), "%.1f", weatherRequest.getMain().getTemp());
+        temperature.setText(getString(R.string.temperature) + ": " + temperatureValue + " " + getString(R.string.type_temp));
+
+        String humidityStr = String.format(Locale.getDefault(), "%d", weatherRequest.getMain().getHumidity());
+        humidity.setText(getString(R.string.humidity) + ": " + humidityStr + " %");
+
+        double convertPressure = weatherRequest.getMain().getPressure() * 0.7501; // Конвертируем в мм.рт.ст
+        String pressureText = String.format(Locale.getDefault(), "%.0f", convertPressure);
+        pressure.setText(getString(R.string.select_pressure) + ": " + pressureText + " " + getString(R.string.type_pressure));
+
+        String windSpeedStr = String.format(Locale.getDefault(), "%.0f", weatherRequest.getWind().getSpeed());
+        windSpeed.setText(getString(R.string.select_wind_speed) + ": " + windSpeedStr + " " + getString(R.string.type_wind_speed));
+    }
 }

@@ -1,4 +1,4 @@
-package ru.geekbrains.weatherinmoscow.model;
+package ru.vlsv.androidone.model;
 
 public class Main {
     private float temp;
