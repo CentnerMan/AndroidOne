@@ -2,12 +2,19 @@ package ru.vlsv.androidone.tools;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import ru.vlsv.androidone.entities.City;
+import ru.vlsv.androidone.entities.HistoryData;
 
 public class Tools {
     public static int randomInt(int min, int max) {
         max -= min;
         return (int) (Math.random() * ++max) + min;
     }
+
+    public static List<HistoryData> historyList = new ArrayList<>();
 
     public static String getLines(BufferedReader reader) {
         StringBuilder rawData = new StringBuilder(1024);

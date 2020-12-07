@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,9 +26,11 @@ import androidx.fragment.app.Fragment;
 import ru.vlsv.androidone.R;
 import ru.vlsv.androidone.entities.City;
 import ru.vlsv.androidone.entities.CityContainer;
+import ru.vlsv.androidone.entities.HistoryData;
 import ru.vlsv.androidone.model.WeatherRequest;
 
 import static ru.vlsv.androidone.tools.Tools.getLines;
+import static ru.vlsv.androidone.tools.Tools.historyList;
 
 public class WeatherFragment extends Fragment {
 
@@ -173,5 +174,7 @@ public class WeatherFragment extends Fragment {
 
         String windSpeedStr = String.format(Locale.getDefault(), "%.0f", weatherRequest.getWind().getSpeed());
         windSpeed.setText(getString(R.string.select_wind_speed) + ": " + windSpeedStr + " " + getString(R.string.type_wind_speed));
+
+        historyList.add(new HistoryData(cities[currentPosition], temperatureValue, humidityStr, pressureText, windSpeedStr));
     }
 }

@@ -18,7 +18,7 @@
             android:title="@string/menu_slideshow" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/menu_header">
         <menu>
             <item
                 android:id="@+id/nav_share"
