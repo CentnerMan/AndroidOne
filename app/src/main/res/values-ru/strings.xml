@@ -11,4 +11,15 @@
     <string name="type_temp">\u00B0С</string>
     <string name="type_wind_speed">м/с</string>
     <string name="type_pressure">мм.рт.ст.</string>
+    <string name="menu_home">Домой</string>
+    <string name="menu_gallery">Галерея</string>
+    <string name="menu_slideshow">Слайды</string>
+    <string name="menu_share">Поделиться</string>
+    <string name="menu_send">Отправить</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
 </resources>
