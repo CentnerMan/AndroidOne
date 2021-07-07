@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">AndroidOne</string>
+    <string name="app_name" translatable="false">AndroidOne</string>
+    <string name="btn_one">Button</string>
+    <string name="switch_one">Switch</string>
+    <string name="todo">TODO</string>
+    <string name="field_one">Super Text</string>
+    <string name="hello_android">Hello, Android!</string>
+    <string name="hello_user">Hello, User!</string>
 </resources>

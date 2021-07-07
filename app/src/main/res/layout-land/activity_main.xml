@@ -22,47 +22,50 @@
         android:id="@+id/buttonOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="64dp"
         android:text="@string/btn_one"
-        app:layout_constraintBottom_toTopOf="@+id/textViewOne"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/switchOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:text="@string/switch_one"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOne" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOne" />
 
     <ImageView
         android:id="@+id/imageViewOne"
         android:layout_width="103dp"
         android:layout_height="94dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOne"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonOne"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/field_one"
         android:inputType="text"
+        android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchOne" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewOne" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
